@@ -4,5 +4,5 @@ The revised simulated dataset and the associated files required to generate simu
 
 
 ** simulated text-localization Image Samples **
-![simulated text-localization Image Samples](images/srnet_github.drawio.png "Simulated iamge")
+![simulated text-localization Image Samples](images/srnet_github.drawio.png "Simulated image")
 
