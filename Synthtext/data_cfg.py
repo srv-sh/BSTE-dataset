@@ -1,27 +1,28 @@
-"""
-Some configurations.
-Copyright (c) 2019 Netease Youdao Information Technology Co.,Ltd.
-Licensed under the GPL License 
-Written by Yu Qian
-"""
+
 import numpy as np
+import os
+
+BASE_FOLDER = os.path.normpath(os.getcwd() + os.sep + os.pardir)
+
 
 # font
 font_size = [25, 60]
 underline_rate = 0.01
 strong_rate = 0.07
 oblique_rate = 0.02
-font_dir = '/content/drive/MyDrive/SRNet/SRNet-Datagen/Synthtext/datasets/fonts/temp'
-standard_font_path = '/content/drive/MyDrive/SRNet/SRNet-Datagen/Synthtext/datasets/fonts/temp/Siyamrupali.ttf'
+# font_dir = os.path.join(BASE_FOLDER,'utils/fonts/bangla_ttf')
+font_dir = 'utils/fonts/bangla_ttf'
+
+standard_font_path = 'utils/fonts/temp/Siyamrupali.ttf'
 
 # text
-text_filepath = '/content/drive/MyDrive/SRNet/SRNet-Datagen/Synthtext/data/bangla_text.txt'
+text_filepath = 'utils/bangla_text.txt'
 capitalize_rate = 0.1
 uppercase_rate = 0.04
 
 # background
-bg_filepath = '/content/drive/MyDrive/SRNet/SRNet-Datagen/Synthtext/data/imnames.cp'
-temp_bg_path = '/content/drive/MyDrive/SRNet/SRNet-Datagen/Synthtext/datasets/bg_img/bg_img/'
+bg_filepath = 'utils/imnames.cp'
+temp_bg_path = 'utils/background/'
 
 ## background augment
 brightness_rate = 0.8
@@ -60,5 +61,5 @@ shadow_angle_degree = [1, 3, 5, 7] # shift for shadow_angle_param
 shadow_angle_param = [0.5, None] # scale, shift for np.random.randn()
 shadow_shift_param = np.array([[0, 1, 3], [2, 7, 15]], dtype = np.float32) # scale, shift for np.random.randn()
 shadow_opacity_param = [0.1, 0.5] # shift for shadow_angle_param
-color_filepath = '/content/drive/MyDrive/SRNet/SRNet-Datagen/Synthtext/data/colors.cp'
+color_filepath = 'utils/colors.cp'
 use_random_color_rate = 0.5
