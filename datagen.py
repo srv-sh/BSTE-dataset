@@ -1,7 +1,7 @@
 import os
 import cv2
 import cfg
-from Synthtext.gen import datagen, multiprocess_datagen
+from src.gen import datagen, multiprocess_datagen
 
 def makedirs(path):
     if not os.path.exists(path):
