@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-SRNet data generator.
-Copyright (c) 2019 Netease Youdao Information Technology Co.,Ltd.
-Licensed under the GPL License 
-Written by Yu Qian
-"""
-
 import os
 import cv2
 import math
@@ -16,6 +8,7 @@ import random
 import multiprocessing
 import queue
 import Augmentor
+import glob
 
 from . import render_text_mask
 from . import colorize
@@ -29,26 +22,22 @@ class datagen():
     def __init__(self):
         
         freetype.init()
-        cur_file_path = os.path.dirname(__file__)
-        
-        font_dir = os.path.join(cur_file_path, data_cfg.font_dir)
+
+        font_dir = os.path.join(os.getcwd(), data_cfg.font_dir)
+        # font_dir = data_cfg.font_dir
         self.font_list = os.listdir(font_dir)
         self.font_list = [os.path.join(font_dir, font_name) for font_name in self.font_list]
-        self.standard_font_path = os.path.join(cur_file_path, data_cfg.standard_font_path)
+        self.standard_font_path = os.path.join(os.getcwd(), data_cfg.standard_font_path)
         
-        color_filepath = os.path.join(cur_file_path, data_cfg.color_filepath)
+        color_filepath = os.path.join(os.getcwd(), data_cfg.color_filepath)
         self.colorsRGB, self.colorsLAB = colorize.get_color_matrix(color_filepath)
         
-        text_filepath = os.path.join(cur_file_path, data_cfg.text_filepath)
+        text_filepath = os.path.join(os.getcwd(), data_cfg.text_filepath)
         self.text_list = open(text_filepath, 'r').readlines()
         self.text_list = [text.strip() for text in self.text_list]
-        
-        bg_filepath = os.path.join(cur_file_path, data_cfg.bg_filepath)
-
-        with open(bg_filepath, 'rb') as f:
-	        self.bg_list = set(cp.load(f))
-        self.bg_list = [data_cfg.temp_bg_path+img_path.strip() for img_path in self.bg_list]
-        
+        bg_path = data_cfg.temp_bg_path
+        bg_files = os.listdir(bg_path)
+        self.bg_list =  [data_cfg.temp_bg_path + bg for bg in bg_files]
         self.surf_augmentor = Augmentor.DataPipeline(None)
         self.surf_augmentor.random_distortion(probability = data_cfg.elastic_rate,
             grid_width = data_cfg.elastic_grid_size, grid_height = data_cfg.elastic_grid_size,
@@ -80,7 +69,6 @@ class datagen():
             img_path = random.choice(self.bg_list)
             print(img_path,"img path")
             bg = cv2.imread(img_path)
-
             # init font
             print("font: ",font)
             font = freetype.Font(font)
