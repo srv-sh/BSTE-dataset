@@ -16,12 +16,12 @@ font_dir = 'utils/fonts/bangla_ttf'
 standard_font_path = 'utils/fonts/temp/Siyamrupali.ttf'
 
 # text
-text_filepath = 'utils/bangla_text.txt'
+text_filepath = 'utils/text/bangla_text.txt'
 capitalize_rate = 0.1
 uppercase_rate = 0.04
 
 # background
-bg_filepath = 'utils/imnames.cp'
+bg_filepath = 'utils/color/imnames.cp'
 temp_bg_path = 'utils/background/'
 
 ## background augment
@@ -61,5 +61,5 @@ shadow_angle_degree = [1, 3, 5, 7] # shift for shadow_angle_param
 shadow_angle_param = [0.5, None] # scale, shift for np.random.randn()
 shadow_shift_param = np.array([[0, 1, 3], [2, 7, 15]], dtype = np.float32) # scale, shift for np.random.randn()
 shadow_opacity_param = [0.1, 0.5] # shift for shadow_angle_param
-color_filepath = 'utils/colors.cp'
+color_filepath = 'utils/color/colors.cp'
 use_random_color_rate = 0.5
