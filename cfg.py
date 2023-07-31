@@ -1,5 +1,8 @@
 # dir
-data_dir = '/content/drive/MyDrive/SRNet/SRNet-Datagen/Synthtext/datasets/dataset_for_evaluation'
+import os
+ROOT =  os.getcwd()
+data_dir = ROOT + '/dataset/generated_images'
+print(data_dir)
 i_t_dir = 'i_t'
 i_s_dir = 'i_s'
 t_sk_dir = 't_sk'
